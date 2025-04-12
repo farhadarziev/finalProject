@@ -1,0 +1,14 @@
+import sqlite3
+
+def get_student_courses_and_grades(student_id):
+    conn = sqlite3.connect("database/sis.db")
+    cursor = conn.cursor()
+    cursor.execute("""
+        SELECT c.name, g.grade
+        FROM grades g
+        JOIN courses c ON g.course_id = c.id
+        WHERE g.student_id = ?
+    """, (student_id,))
+    result = cursor.fetchall()
+    conn.close()
+    return result

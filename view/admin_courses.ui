@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AdminCourses</class>
+ <widget class="QMainWindow" name="AdminCourses">
+  <property name="geometry">
+   <rect><x>0</x><y>0</y><width>400</width><height>300</height></rect>
+  </property>
+  <property name="windowTitle">
+   <string>Admin - Courses</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="btn_python">
+    <property name="geometry"><rect><x>150</x><y>30</y><width>100</width><height>30</height></rect></property>
+    <property name="text"><string>Python</string></property>
+   </widget>
+   <widget class="QPushButton" name="btn_cpp">
+    <property name="geometry"><rect><x>150</x><y>80</y><width>100</width><height>30</height></rect></property>
+    <property name="text"><string>C++</string></property>
+   </widget>
+   <widget class="QPushButton" name="btn_java">
+    <property name="geometry"><rect><x>150</x><y>130</y><width>100</width><height>30</height></rect></property>
+    <property name="text"><string>Java</string></property>
+   </widget>
+   <widget class="QPushButton" name="btn_js">
+    <property name="geometry"><rect><x>150</x><y>180</y><width>100</width><height>30</height></rect></property>
+    <property name="text"><string>JavaScript</string></property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar"/>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
+
+
