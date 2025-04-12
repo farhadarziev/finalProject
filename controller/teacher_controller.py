@@ -1,8 +1,8 @@
 from PyQt5 import uic
-from PyQt5.QtWidgets import QWidget, QTableWidgetItem
+from PyQt5.QtWidgets import QMainWindow, QTableWidgetItem
 from model.teacher_model import get_teacher_courses, get_students_by_course, update_student_grade
 
-class TeacherController(QWidget):
+class TeacherController(QMainWindow):
     def __init__(self, teacher_id):
         super().__init__()
         self.teacher_id = teacher_id
