@@ -1,19 +1,25 @@
 from PyQt5 import uic
-from PyQt5.QtWidgets import QWidget
-from controller.course_view_controller import CourseController  
+from PyQt5.QtWidgets import QMainWindow
+from controller.course_view_controller import CourseViewController  # импортируем правильный контроллер
 
-class AdminController(QWidget):
+class AdminController(QMainWindow):
     def __init__(self):
         super().__init__()
         uic.loadUi("view2/admview.ui", self)
+        self.setWindowTitle("Admin Panel")
 
-        self.pybtn.clicked.connect(lambda: self.open_course("Python"))
-        self.cbtn.clicked.connect(lambda: self.open_course("C++"))
-        self.jbtn.clicked.connect(lambda: self.open_course("Java"))
-        self.jsbtn.clicked.connect(lambda: self.open_course("JavaScript"))
+        self.pybtn.clicked.connect(self.open_python_course)
+        self.jbtn.clicked.connect(self.open_java_course)
 
-    def open_course(self, course_name):
-        self.hide()
-        self.course_view = CourseController(course_name)
-        self.course_view.show()
+    def open_python_course(self):
+        self.hide()  
+        self.python_window = CourseViewController("py")  # передаем параметр "py" для Python
+        self.python_window.show()
+
+    def open_java_course(self):
+        self.hide()  
+        self.java_window = CourseViewController("java")  # передаем параметр "java" для Java
+        self.java_window.show()
+
+
 

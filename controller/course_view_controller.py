@@ -1,22 +1,31 @@
 from PyQt5 import uic
-from PyQt5.QtWidgets import QWidget, QTableWidgetItem
-from model.admin_model import get_students_by_course, get_teacher_by_course
+from PyQt5.QtWidgets import QMainWindow, QTableWidgetItem
+import os
 
-class CourseController(QWidget):
+class CourseViewController(QMainWindow):
     def __init__(self, course_name):
         super().__init__()
-        ui_file = f"view2/ad{course_name.lower()}.ui"
-        uic.loadUi(ui_file, self)
-        self.setWindowTitle(f"{course_name} - Students")
+        
+        ui_files = {
+            "py": "pythview.ui",
+            "java": "javaview.ui",      
+        }
 
-        students = get_students_by_course(course_name)
-        teacher = get_teacher_by_course(course_name)
+        ui_file = ui_files.get(course_name.lower(), "pythview.ui")
+        ui_path = os.path.join(os.path.dirname(__file__), '..', 'view2', ui_file)
+        uic.loadUi(ui_path, self)
 
-        self.teacher_label.setText(f"Teacher: {teacher}")  # убедись, что имя метки — teacher_label
+        self.setWindowTitle(f"Course: {course_name.capitalize()}")
 
-        self.table_students.setRowCount(len(students))
-        for i, student in enumerate(students):
-            self.table_students.setItem(i, 0, QTableWidgetItem(student["name"]))
+        # Подключение back-кнопки с любым именем
+        for btn_name in ["backbtn", "backbtnpy", "backjbtnpy"]:
+            if hasattr(self, btn_name):
+                getattr(self, btn_name).clicked.connect(self.go_back)
+                break  # нашли кнопку — подключили, хватит
 
-
+    def go_back(self):
+        self.close()
+        from controller.admin_controller import AdminController
+        self.window = AdminController()
+        self.window.show()
 
