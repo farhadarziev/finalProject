@@ -1,3 +1,5 @@
+# controller/main_controller.py
+
 from PyQt5 import uic
 from PyQt5.QtWidgets import QMainWindow
 from controller.login_controller import LoginController
@@ -5,23 +7,30 @@ from controller.login_controller import LoginController
 class MainController(QMainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi("view/main_window.ui", self)
+        uic.loadUi("view2/mainview.ui", self)  # Убедись, что путь и имя файла совпадают
 
-        self.btn_student.clicked.connect(self.open_student_login)
-        self.btn_teacher.clicked.connect(self.open_teacher_login)
-        self.btn_admin.clicked.connect(self.open_admin_login)
+        # Привязка кнопок
+        self.stdbtn.clicked.connect(self.open_student_login)
+        self.teabtn.clicked.connect(self.open_teacher_login)
+        self.admbtn.clicked.connect(self.open_admin_login)
 
     def open_student_login(self):
-        self.login_window = LoginController(role="student")
-        self.login_window.show()
-        self.hide()
+        print("Student button clicked")
+        self.login_controller = LoginController(role="student")
+        self.login_controller.show()
+        self.close()
 
     def open_teacher_login(self):
-        self.login_window = LoginController(role="teacher")
-        self.login_window.show()
-        self.hide()
+        print("Teacher button clicked")
+        self.login_controller = LoginController(role="teacher")
+        self.login_controller.show()
+        self.close()
 
     def open_admin_login(self):
-        self.login_window = LoginController(role="admin")
-        self.login_window.show()
-        self.hide()
+        print("Admin button clicked")
+        self.login_controller = LoginController(role="admin")
+        self.login_controller.show()
+        self.close()
+
+
+

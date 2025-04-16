@@ -1,35 +1,36 @@
 from PyQt5 import uic
-from PyQt5.QtWidgets import QWidget, QMainWindow
-from controller.student_controller import StudentController
-from controller.teacher_controller import TeacherController
+from PyQt5.QtWidgets import QMainWindow, QMessageBox
 from controller.admin_controller import AdminController
-from model.users_model import login_user
+from controller.teacher_controller import TeacherController
+from controller.student_controller import StudentController
+from model.user_model import check_user_credentials
 
-class LoginController(  QMainWindow):
+class LoginController(QMainWindow):
     def __init__(self, role):
         super().__init__()
         self.role = role
-        uic.loadUi("view/login_window.ui", self)
-        self.btn_login.clicked.connect(self.handle_login)
+        uic.loadUi("view2/loginview.ui", self)
+        self.setWindowTitle(f"{role.capitalize()} Login")
 
-        self.view = None
+        self.loginbtn.clicked.connect(self.handle_login)  
 
     def handle_login(self):
-        login = self.lineEdit_login.text()
-        password = self.lineEdit_password.text()
-        print("login passed")
+        username = self.usernamelg.text()
+        password = self.passwwr.text()
 
-        user = login_user(self.role, login, password)
-        if user:
-            if self.role == "student":
-                self.view = StudentController(user["id"])
-            elif self.role == "teacher":
-                self.view = TeacherController(user["id"])
-            elif self.role == "admin":
-                self.view = AdminController(user["id"])
-            self.view.show()
+        role = check_user_credentials(username, password)
+
+        if role == "admin":
             self.hide()
+            self.admin = AdminController()
+            self.admin.show()
+        elif role == "teacher":
+            self.hide()
+            self.teacher = TeacherController(username)
+            self.teacher.show()
+        elif role == "student":
+            self.hide()
+            self.student = StudentController(username)
+            self.student.show()
         else:
-            print("neverno")
-            self.label_error.setText("Неверный логин или пароль")
-
+            QMessageBox.warning(self, "Ошибка", "Неверный логин или пароль")

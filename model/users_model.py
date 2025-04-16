@@ -1,16 +1,50 @@
-import sqlite3
+import os
+from PyQt5 import uic
+from PyQt5.QtWidgets import QMainWindow, QMessageBox
+from controller.admin_controller import AdminController
+from controller.teacher_controller import TeacherController
+from controller.student_controller import StudentController
+from model.users_model import check_credentials
 
-def login_user(role, login, password):
-    conn = sqlite3.connect("database/sis.db")
-    cursor = conn.cursor()
+class LoginController(QMainWindow):
+    def __init__(self, role):
+        super().__init__()
+        self.role = role
+        ui_path = os.path.join(os.path.dirname(__file__), '..', 'view2', 'loginview.ui')
+        uic.loadUi(ui_path, self)
+        self.setWindowTitle("Login")
 
-    table = "students" if role == "student" else "teachers" if role == "teacher" else "admins"
+        self.loginbtn.clicked.connect(self.handle_login)
 
-    try:
-        cursor.execute(f"SELECT id, name FROM {table} WHERE login = ? AND password = ?", (login, password))
-        row = cursor.fetchone()
-        if row:
-            return {"id": row[0], "name": row[1]}
-    except Exception as e:
-        print("Ошибка логина:", e)
-    return None
+    def handle_login(self):
+        username = self.usernamelg.text()
+        password = self.passwwr.text()
+
+        user = check_credentials(username, password, self.role)
+
+        if user:
+            if self.role == "admin":
+                self.open_admin()
+            elif self.role == "teacher":
+                self.open_teacher(user["linked_id"])
+            elif self.role == "student":
+                self.open_student(user["linked_id"])
+        else:
+            QMessageBox.warning(self, "Login Failed", "Invalid username or password")
+
+    def open_admin(self):
+        self.admin_win = AdminController()
+        self.admin_win.show()
+        self.close()
+
+    def open_teacher(self, teacher_id):
+        self.teacher_win = TeacherController(teacher_id)
+        self.teacher_win.show()
+        self.close()
+
+    def open_student(self, student_id):
+        self.student_win = StudentController(student_id)
+        self.student_win.show()
+        self.close()
+        
+
