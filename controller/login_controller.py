@@ -29,13 +29,15 @@ class LoginController(QMainWindow):
                 self.admin.show()
             elif role == "teacher":
                 self.hide()
-                self.teacher = TeacherController(user["linked_id"])
+                self.teacher = TeacherController(username, password)
                 self.teacher.show()
             elif role == "student":
                 self.hide()
-                self.student = StudentController(user["linked_id"])
+                self.student = StudentController(username, password)
                 self.student.show()
         else:
             QMessageBox.warning(self, "Ошибка", "Неверный логин или пароль")
+
+
 
 

@@ -1,15 +1,30 @@
-def get_student_info(student_id):
+import sqlite3
+
+def get_student_info(username, password):
     conn = sqlite3.connect("database/sis.db")
     cursor = conn.cursor()
+    cursor.execute("""
+        SELECT s.id, s.name, c.name, t.name
+        FROM students s
+        JOIN courses c ON s.course_id = c.id
+        JOIN teachers t ON c.teacher_id = t.id
+        WHERE s.login = ? AND s.password = ?
 
-    cursor.execute("SELECT full_name, course FROM students WHERE id = ?", (student_id,))
-    student_row = cursor.fetchone()
-
-    cursor.execute("SELECT project1, project2, project3, exam1, exam2, exam3 FROM grades WHERE student_id = ?", (student_id,))
-    grade_row = cursor.fetchone()
-
+    """, (username, password))
+    result = cursor.fetchone()
     conn.close()
+    return result  # (student_id, student_name, course_name, teacher_name)
 
-    return student_row[0], student_row[1], grade_row
+def get_student_grades(student_id):
+    conn = sqlite3.connect("database/sis.db")
+    cursor = conn.cursor()
+    cursor.execute("""
+        SELECT exam1, project1, exam2, project2, exam3, project3
+        FROM grades
+        WHERE student_id = ?
 
+    """, (student_id,))
+    grades = cursor.fetchone()
+    conn.close()
+    return grades
 

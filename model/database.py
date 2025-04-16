@@ -36,7 +36,8 @@ def init_db():
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT NOT NULL,
         login TEXT UNIQUE NOT NULL,
-        password TEXT NOT NULL
+        password TEXT NOT NULL,
+        course TEXT NOT NULL
     );
 
     CREATE TABLE courses (
@@ -49,10 +50,13 @@ def init_db():
     CREATE TABLE grades (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         student_id INTEGER NOT NULL,
-        course_id INTEGER NOT NULL,
-        grade TEXT,
-        FOREIGN KEY (student_id) REFERENCES students(id),
-        FOREIGN KEY (course_id) REFERENCES courses(id)
+        project1 INTEGER,
+        project2 INTEGER,
+        project3 INTEGER,
+        exam1 INTEGER,
+        exam2 INTEGER,
+        exam3 INTEGER,
+        FOREIGN KEY (student_id) REFERENCES students(id)
     );
     ''')
 
@@ -63,6 +67,7 @@ def init_db():
     teachers = [("Alice Smith", "alice", "alice123"), ("Bob Johnson", "bob", "bob123")]
     cursor.executemany("INSERT INTO teachers (name, login, password) VALUES (?, ?, ?)", teachers)
 
+    # Получаем ID преподавателей
     cursor.execute("SELECT id FROM teachers WHERE login = 'alice'")
     alice_id = cursor.fetchone()[0]
     cursor.execute("SELECT id FROM teachers WHERE login = 'bob'")
@@ -71,40 +76,32 @@ def init_db():
     # Курсы
     courses = [
         ("Python", alice_id),
-        ("C++", alice_id),
-        ("Java", bob_id),
-        ("JavaScript", bob_id)
+        ("Java", bob_id)
     ]
     cursor.executemany("INSERT INTO courses (name, teacher_id) VALUES (?, ?)", courses)
 
-    cursor.execute("SELECT id, name FROM courses")
-    course_map = {name: cid for cid, name in cursor.fetchall()}
+    # Студенты: 3 на Python, 3 на Java
+    students = [
+        ("Beth Grimes", "beth", "beth123", "Python"),
+        ("Christopher Watkins", "chris", "chris123", "Python"),
+        ("Charles Stark", "charles", "charles123", "Python"),
+        ("Gerald Lee", "gerald", "gerald123", "Java"),
+        ("Louise Lawrence", "louise", "louise123", "Java"),
+        ("Gary Bates-Baker", "gary", "gary123", "Java")
+    ]
+    cursor.executemany("INSERT INTO students (name, login, password, course) VALUES (?, ?, ?, ?)", students)
 
-    # Студенты
-    first_names = [f"Student {i+1}" for i in range(50)]
-    students = [(name, f"student{i+1}", "pass123") for i, name in enumerate(first_names)]
-    cursor.executemany("INSERT INTO students (name, login, password) VALUES (?, ?, ?)", students)
+    # Получаем ID студентов
+    cursor.execute("SELECT id, course FROM students")
+    student_data = cursor.fetchall()
 
-    cursor.execute("SELECT id FROM students")
-    student_ids = [row[0] for row in cursor.fetchall()]
-
-    # Распределение студентов по курсам
-    assignments = {
-        course_map["Python"]: student_ids[:15],
-        course_map["C++"]: student_ids[15:25],
-        course_map["Java"]: student_ids[25:40],
-        course_map["JavaScript"]: student_ids[40:]
-    }
-
-    # Оценки
-    possible_grades = ["A", "B", "C", "D", "F"]
-    grades_data = []
-    for course_id, s_list in assignments.items():
-        for sid in s_list:
-            grade = random.choice(possible_grades)
-            grades_data.append((sid, course_id, grade))
-
-    cursor.executemany("INSERT INTO grades (student_id, course_id, grade) VALUES (?, ?, ?)", grades_data)
+    # Случайные оценки для каждого студента
+    for student_id, course in student_data:
+        grades = [random.randint(60, 100) for _ in range(6)]
+        cursor.execute('''
+            INSERT INTO grades (student_id, project1, project2, project3, exam1, exam2, exam3)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+        ''', (student_id, *grades))
 
     conn.commit()
     conn.close()

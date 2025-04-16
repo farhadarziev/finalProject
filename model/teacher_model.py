@@ -9,6 +9,17 @@ def get_teacher_courses(teacher_id):
     conn.close()
     return [{"id": row[0], "name": row[1]} for row in rows]
 
+def get_teacher_info(username, password):
+    conn = sqlite3.connect("database/sis.db")
+    cursor = conn.cursor()
+    cursor.execute("""
+        SELECT id, name FROM teachers WHERE login = ? AND password = ?
+    """, (username, password))
+    result = cursor.fetchone()
+    conn.close()
+    return result  # (teacher_id, teacher_name)
+
+
 def get_students_by_course(course_id):
     conn = sqlite3.connect("database/sis.db")
     cursor = conn.cursor()

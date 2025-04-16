@@ -1,12 +1,23 @@
 from PyQt5 import uic
 from PyQt5.QtWidgets import QMainWindow, QTableWidgetItem
 from model.teacher_model import get_teacher_courses, get_students_by_course, update_student_grade
+from model.teacher_model import get_teacher_info, get_teacher_courses, get_students_by_course, update_student_grade
+
 
 class TeacherController(QMainWindow):
-    def __init__(self, teacher_id):
+    def __init__(self, username, password):
         super().__init__()
-        self.teacher_id = teacher_id
-        uic.loadUi("view/teacher_view.ui", self)
+        uic.loadUi("view2/bobview.ui", self)
+
+        # Получаем данные преподавателя
+        teacher_info = get_teacher_info(username, password)
+        if not teacher_info:
+            print("Ошибка: преподаватель не найден")
+            self.close()
+            return
+
+        self.teacher_id, self.teacher_name = teacher_info
+        self.setWindowTitle(f"{self.teacher_name} | Teacher Panel")
 
         self.load_courses()
         self.combo_courses.currentIndexChanged.connect(self.load_students)
