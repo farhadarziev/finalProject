@@ -1,51 +1,37 @@
 from PyQt5 import uic
 from PyQt5.QtWidgets import QMainWindow, QTableWidgetItem
-from model.teacher_model import get_teacher_courses, get_students_by_course, update_student_grade
-from model.teacher_model import get_teacher_info, get_teacher_courses, get_students_by_course, update_student_grade
-
+from model.teacher_model import get_teacher_info, get_teacher_course_name, get_students_by_course
 
 class TeacherController(QMainWindow):
-    def __init__(self, username, password):
+    def __init__(self, teacher_id):
         super().__init__()
-        uic.loadUi("view2/bobview.ui", self)
+        uic.loadUi("view2/teacher_view.ui", self)
 
-        # Получаем данные преподавателя
-        teacher_info = get_teacher_info(username, password)
+        teacher_info = get_teacher_info(teacher_id)
         if not teacher_info:
             print("Ошибка: преподаватель не найден")
             self.close()
             return
 
         self.teacher_id, self.teacher_name = teacher_info
-        self.setWindowTitle(f"{self.teacher_name} | Teacher Panel")
+        self.label_teacher.setText(f"Teacher: {self.teacher_name}")
 
-        self.load_courses()
-        self.combo_courses.currentIndexChanged.connect(self.load_students)
-        self.btn_update_grade.clicked.connect(self.update_grade)
+        self.course_name = get_teacher_course_name(self.teacher_id)
+        self.label_course.setText(f"Course: {self.course_name}")
 
-    def show(self):
-        super().show()
-
-    def load_courses(self):
-        self.courses = get_teacher_courses(self.teacher_id)
-        self.combo_courses.clear()
-        for course in self.courses:
-            self.combo_courses.addItem(course['name'], course['id'])
+        self.load_students()
+        self.btn_exit.clicked.connect(self.close)
 
     def load_students(self):
-        course_id = self.combo_courses.currentData()
-        students = get_students_by_course(course_id)
+        students = get_students_by_course(self.course_name)
         self.table_students.setRowCount(len(students))
-        for i, (student_id, name, grade) in enumerate(students):
-            self.table_students.setItem(i, 0, QTableWidgetItem(name))
-            self.table_students.setItem(i, 1, QTableWidgetItem(grade if grade else ""))
-            self.table_students.setVerticalHeaderItem(i, QTableWidgetItem(str(student_id)))
+        self.table_students.setColumnCount(6)
+        self.table_students.setHorizontalHeaderLabels([
+            "Exam 1", "Project 1", "Exam 2", "Project 2", "Exam 3", "Project 3"
+        ])
 
-    def update_grade(self):
-        row = self.table_students.currentRow()
-        student_name = self.table_students.item(row, 0).text()
-        new_grade = self.table_students.item(row, 1).text()
-        student_id = int(self.table_students.verticalHeaderItem(row).text())
-        course_id = self.combo_courses.currentData()
+        for row, (name, *grades) in enumerate(students):
+            self.table_students.setVerticalHeaderItem(row, QTableWidgetItem(name))
+            for col, grade in enumerate(grades):
+                self.table_students.setItem(row, col, QTableWidgetItem(str(grade)))
 
-        update_student_grade(student_id, course_id, new_grade)

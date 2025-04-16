@@ -1,56 +1,40 @@
 import sqlite3
+import os
 
-def get_teacher_courses(teacher_id):
-    conn = sqlite3.connect("database/sis.db")
+def get_db():
+    base = os.path.dirname(os.path.abspath(__file__))
+    return sqlite3.connect(os.path.join(base, '..', 'database', 'sis.db'))
+
+def get_teacher_info(teacher_id):
+    conn = get_db()
     cursor = conn.cursor()
-
-    cursor.execute("SELECT id, name FROM courses WHERE teacher_id = ?", (teacher_id,))
-    rows = cursor.fetchall()
-    conn.close()
-    return [{"id": row[0], "name": row[1]} for row in rows]
-
-def get_teacher_info(username, password):
-    conn = sqlite3.connect("database/sis.db")
-    cursor = conn.cursor()
-    cursor.execute("""
-        SELECT id, name FROM teachers WHERE login = ? AND password = ?
-    """, (username, password))
+    
+    cursor.execute("SELECT id, name FROM teachers WHERE id=?", (teacher_id,))
     result = cursor.fetchone()
     conn.close()
-    return result  # (teacher_id, teacher_name)
+    return result  # (id, name)
 
-
-def get_students_by_course(course_id):
-    conn = sqlite3.connect("database/sis.db")
+def get_teacher_course_name(teacher_id):
+    conn = get_db()
     cursor = conn.cursor()
+    cursor.execute("SELECT name FROM courses WHERE teacher_id=?", (teacher_id,))
+    result = cursor.fetchone()
+    conn.close()
+    return result[0] if result else None
 
-    cursor.execute('''
-        SELECT students.id, students.name, grades.grade
-        FROM students
-        LEFT JOIN grades ON students.id = grades.student_id AND grades.course_id = ?
-    ''', (course_id,))
+def get_students_by_course(course_name):
+    conn = get_db()
+    cursor = conn.cursor()
+    cursor.execute("""
+        SELECT s.name, g.exam1, g.project1, g.exam2, g.project2, g.exam3, g.project3
+        FROM students s
+        JOIN courses c ON s.course_id = c.id
+        JOIN grades g ON s.id = g.student_id
+        WHERE c.name = ?
+    """, (course_name,))
     result = cursor.fetchall()
     conn.close()
     return result
 
-def update_student_grade(student_id, course_id, grade):
-    conn = sqlite3.connect("database/sis.db")
-    cursor = conn.cursor()
 
-    # Если оценка уже есть, обновим
-    cursor.execute('''
-        SELECT id FROM grades WHERE student_id = ? AND course_id = ?
-    ''', (student_id, course_id))
-    row = cursor.fetchone()
 
-    if row:
-        cursor.execute('''
-            UPDATE grades SET grade = ? WHERE student_id = ? AND course_id = ?
-        ''', (grade, student_id, course_id))
-    else:
-        cursor.execute('''
-            INSERT INTO grades (student_id, course_id, grade) VALUES (?, ?, ?)
-        ''', (student_id, course_id, grade))
-
-    conn.commit()
-    conn.close()

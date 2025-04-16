@@ -29,7 +29,8 @@ class LoginController(QMainWindow):
                 self.admin.show()
             elif role == "teacher":
                 self.hide()
-                self.teacher = TeacherController(username, password)
+                self.teacher = TeacherController(user["linked_id"])
+
                 self.teacher.show()
             elif role == "student":
                 self.hide()
