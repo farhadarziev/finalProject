@@ -29,13 +29,21 @@ color:green;
 font-size:20px;
 font-weight:bold;
 margin-top:5px;
+<<<<<<< HEAD
 color:green;
+=======
+color:white;
+>>>>>>> 76e17aa24332aae5da57ab150d7e01a14374cb5a
 }
 
 
 #editbtnpy{
 height:25px;
+<<<<<<< HEAD
 width:15px;
+=======
+widht:15px;
+>>>>>>> 76e17aa24332aae5da57ab150d7e01a14374cb5a
 font-size:14px;
 }
 
@@ -48,7 +56,11 @@ background-color:white;
 
 #alexitbtn{
 height:25px;
+<<<<<<< HEAD
 width:15px;
+=======
+widht:15px;
+>>>>>>> 76e17aa24332aae5da57ab150d7e01a14374cb5a
 font-size:14px;
 }
 
