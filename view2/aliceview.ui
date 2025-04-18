@@ -29,7 +29,6 @@ color:green;
 font-size:20px;
 font-weight:bold;
 margin-top:5px;
-<<<<<<< HEAD
 color:green;
 =======
 color:white;
@@ -39,7 +38,6 @@ color:white;
 
 #editbtnpy{
 height:25px;
-<<<<<<< HEAD
 width:15px;
 =======
 widht:15px;
@@ -56,7 +54,6 @@ background-color:white;
 
 #alexitbtn{
 height:25px;
-<<<<<<< HEAD
 width:15px;
 =======
 widht:15px;

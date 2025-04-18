@@ -26,11 +26,8 @@
       <property name="text"><string>Course: </string></property>
       <property name="alignment"><set>Qt::AlignCenter</set></property>
       <property name="styleSheet">
-<<<<<<< HEAD
        <string>font-size: 20px; color: green;</string>
-=======
        <string>font-size: 20px; color: white;</string>
->>>>>>> 76e17aa24332aae5da57ab150d7e01a14374cb5a
       </property>
      </widget>
     </item>

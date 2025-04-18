@@ -34,11 +34,8 @@ color:white;
 
 #addjbtn{
 height:25px;
-<<<<<<< HEAD
 width:15px;
-=======
 widht:15px;
->>>>>>> 76e17aa24332aae5da57ab150d7e01a14374cb5a
 font-size:14px;
 }
 
@@ -50,11 +47,8 @@ background-color:white;
 
 #deljbtn{
 height:25px;
-<<<<<<< HEAD
 width:15px;
-=======
 widht:15px;
->>>>>>> 76e17aa24332aae5da57ab150d7e01a14374cb5a
 font-size:14px;
 }
 
@@ -65,12 +59,8 @@ background-color:white;
 }
 
 #backjbtnpy{
-height:25px;
-<<<<<<< HEAD
 width:15px;
-=======
 widht:15px;
->>>>>>> 76e17aa24332aae5da57ab150d7e01a14374cb5a
 font-size:14px;
 }
 
