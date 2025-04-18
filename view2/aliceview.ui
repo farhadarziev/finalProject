@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1026</width>
+    <height>847</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#teaframe1{
+background-color:#172F5F;
+}
+
+#tealabel{
+font-size:40px;
+font-weight:bold;
+margin-top:10px;
+color:green;
+}
+
+#pylabel{
+font-size:20px;
+font-weight:bold;
+margin-top:5px;
+color:green;
+}
+
+
+#editbtnpy{
+height:25px;
+width:15px;
+font-size:14px;
+}
+
+#editbtnpy:hover{
+border:2px solid green;
+color:green;
+background-color:white;
+}
+
+
+#alexitbtn{
+height:25px;
+width:15px;
+font-size:14px;
+}
+
+#alexitbtn:hover{
+border:2px solid green;
+color:green;
+background-color:white;
+}
+
+</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="1" column="0">
+     <widget class="QFrame" name="teaframe1">
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QFormLayout" name="formLayout">
+       <item row="0" column="0">
+        <widget class="QLabel" name="tealabel">
+         <property name="text">
+          <string>Alice</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="pylabel">
+         <property name="text">
+          <string>Python</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0" colspan="2">
+        <widget class="QTableWidget" name="pytable">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <row>
+          <property name="text">
+           <string/>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>1. Beth Grimes</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>2. Christopher Watkins</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>3. Charles Stark</string>
+          </property>
+         </row>
+         <column>
+          <property name="text">
+           <string>Exam</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Project</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Exam</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Project</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Exam</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Project</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QPushButton" name="editbtnpy">
+         <property name="text">
+          <string>Edit</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QPushButton" name="alexitbtn">
+         <property name="text">
+          <string>Exit</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

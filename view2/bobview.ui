@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1103</width>
+    <height>843</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#teaframe2{
+background-color:#172F5F;
+}
+
+
+#tealabel2{
+font-size:40px;
+font-weight:bold;
+margin-top:10px;
+color:green;
+}
+
+#jlabel{
+font-size:20px;
+font-weight:bold;
+margin-top:5px;
+color:white;
+}
+
+#editbtnj{
+height:25px;
+width:15px;
+font-size:14px;
+}
+
+#editbtnj:hover{
+border:2px solid green;
+color:green;
+background-color:white;
+}
+
+#bobexitbtn{
+height:25px;
+width:15px;
+font-size:14px;
+}
+
+#bobexitbtn:hover{
+border:2px solid green;
+color:green;
+background-color:white;
+}
+</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QFrame" name="teaframe2">
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QFormLayout" name="formLayout">
+       <item row="0" column="0" colspan="2">
+        <widget class="QLabel" name="tealabel2">
+         <property name="text">
+          <string>Bob</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0" colspan="2">
+        <widget class="QLabel" name="jlabel">
+         <property name="text">
+          <string>Java</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0" colspan="2">
+        <widget class="QTableWidget" name="jtable">
+         <row>
+          <property name="text">
+           <string/>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>1. Gerald Lee</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>2. Louise Lawrence</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>3. Gary Bates-Baker</string>
+          </property>
+         </row>
+         <column>
+          <property name="text">
+           <string>Exam</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Project</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Exam</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Project</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Exam</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Project</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QPushButton" name="editbtnj">
+         <property name="text">
+          <string>Edit</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QPushButton" name="bobexitbtn">
+         <property name="text">
+          <string>Exit</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
