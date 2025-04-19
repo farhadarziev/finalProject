@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>StudentView</class>
+ <widget class="QMainWindow" name="StudentView">
+  <property name="geometry">
+   <rect><x>0</x><y>0</y><width>800</width><height>600</height></rect>
+  </property>
+  <property name="windowTitle">
+   <string>Student Dashboard</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+
+    <item>
+     <widget class="QFrame" name="headerFrame">
+      <property name="frameShape"><enum>QFrame::StyledPanel</enum></property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #172F5F;</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_header">
+       <item>
+        <widget class="QLabel" name="studentcourse1">
+         <property name="text"><string>Course: </string></property>
+         <property name="alignment"><set>Qt::AlignCenter</set></property>
+         <property name="styleSheet">
+          <string>font-size: 24px; font-weight: bold; color: green;</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="studentteacher1">
+         <property name="text"><string>Teacher: </string></property>
+         <property name="alignment"><set>Qt::AlignCenter</set></property>
+         <property name="styleSheet">
+          <string>font-size: 18px; color: white;</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="studentname1">
+         <property name="text"><string>Student: </string></property>
+         <property name="alignment"><set>Qt::AlignCenter</set></property>
+         <property name="styleSheet">
+          <string>font-size: 18px; color: white;</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+
+
+    <item>
+     <widget class="QTableWidget" name="studenttable1">
+      <property name="rowCount"><number>6</number></property>
+      <property name="columnCount"><number>1</number></property>
+      <property name="styleSheet">
+       <string notr="true">background-color: white;</string>
+      </property>
+      <column>
+       <property name="text"><string>Grade</string></property>
+      </column>
+     </widget>
+    </item>
+
+
+    <item>
+     <widget class="QFrame" name="footerFrame">
+      <property name="frameShape"><enum>QFrame::StyledPanel</enum></property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #172F5F;</string>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_footer">
+       <item>
+        <widget class="QPushButton" name="studentexit1">
+         <property name="text"><string>Exit</string></property>
+         <property name="styleSheet">
+          <string notr="true">
+           QPushButton {
+            background-color: white;
+            color: black;
+            font-size: 14px;
+            border-radius: 5px;
+            padding: 5px;
+           }
+           QPushButton:hover {
+            color: green;
+            background-color: white;
+            border: 2px solid green;
+           }
+          </string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
