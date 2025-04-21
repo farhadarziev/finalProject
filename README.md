@@ -17,14 +17,17 @@ The Student Information System (SIS) is a software application designed to manag
 - MVC Architecture: The application follows the Model-View-Controller design pattern, promoting organized and maintainable code.
 
 ## Team Members List:
-Mukadas Adylbekova 
-Zhoomart kyzy Zhamal
-Farkhad Arziev
+- Mukadas Adylbekova 
+- Zhoomart kyzy Zhamal
+- Farkhad Arziev
 
 ## Roles of Group Members: 
-Mukadas Adylbekova -  Frontend Developer, Backend Developer,  Presentation Specialist
-Zhoomart kyzy Zhamal - Frontend Developer, Backend Developer,  Project Manager
-Farkhad Arziev - Backend Developer, Meeting Documentation Specialist,  README and GitHub Specialist 
+### Mukadas Adylbekova   
+- Frontend Developer, Backend Developer,  Presentation Specialist
+### Zhoomart kyzy Zhamal 
+- Frontend Developer, Backend Developer,  Project Manager
+### Farkhad Arziev 
+- Backend Developer, Meeting Documentation Specialist,  README and GitHub Specialist 
 
 
  ## Screenshots:
