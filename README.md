@@ -1,4 +1,4 @@
-**#Title: Student Information System (SIS)**
+# Title: Student Information System (SIS)
 
 Description:
 The Student Information System (SIS) is a software application designed to manage and store data related to students, teachers, courses, and grades. The system allows user to choose their role, student can see their grades, while teachers can manage their students and grades. The admin has full control over the system, including adding and removing.
