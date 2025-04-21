@@ -35,7 +35,6 @@ color:white;
 #addjbtn{
 height:25px;
 width:15px;
-widht:15px;
 font-size:14px;
 }
 
@@ -48,7 +47,6 @@ background-color:white;
 #deljbtn{
 height:25px;
 width:15px;
-widht:15px;
 font-size:14px;
 }
 
@@ -60,7 +58,6 @@ background-color:white;
 
 #backjbtnpy{
 width:15px;
-widht:15px;
 font-size:14px;
 }
 

@@ -19,7 +19,6 @@ class LoginController(QMainWindow):
         password = self.passwwr.text()
 
         user = check_user_credentials(username, password)
-        print(f"[DEBUG] login result: {user}")  # можно удалить позже
 
         if user:
             role = user["role"]
@@ -37,7 +36,7 @@ class LoginController(QMainWindow):
                 self.student = StudentController(username, password)
                 self.student.show()
         else:
-            QMessageBox.warning(self, "Ошибка", "Неверный логин или пароль")
+            QMessageBox.warning(self, " Error", "Invalid login or password")
 
 
 

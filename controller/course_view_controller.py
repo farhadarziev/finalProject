@@ -19,29 +19,20 @@ class CourseViewController(QMainWindow):
         self.setWindowTitle(f"Course: {course_name.capitalize()}")
         self.course_name = course_name.lower()
 
-        print("[DEBUG] ВСЕ ЭЛЕМЕНТЫ В ОКНЕ:")
-        for attr in dir(self):
-            if not attr.startswith("__"):
-                print(" >", attr)
-
         if self.course_name == "py":
             if hasattr(self, "backbtnpy"):
                 self.backbtnpy.clicked.connect(self.go_back)
             if hasattr(self, "addbtn"):
-                print("[DEBUG] addbtn подключается")
                 self.addbtn.clicked.connect(self.add_row)
             if hasattr(self, "delbtn"):
-                print("[DEBUG] delbtn подключается")
                 self.delbtn.clicked.connect(self.delete_row)
 
         elif self.course_name == "java":
             if hasattr(self, "backjbtnpy"):
                 self.backjbtnpy.clicked.connect(self.go_back)
             if hasattr(self, "addjbtn"):
-                print("[DEBUG] addjbtn подключается")
                 self.addjbtn.clicked.connect(self.add_row)
             if hasattr(self, "deljbtn"):
-                print("[DEBUG] deljbtn подключается")
                 self.deljbtn.clicked.connect(self.delete_row)
 
     def go_back(self):
@@ -55,11 +46,9 @@ class CourseViewController(QMainWindow):
             return self.pythtable
         elif self.course_name == "java" and hasattr(self, "javatable"):
             return self.javatable
-        print("[DEBUG] Таблица не найдена")
         return None
 
     def add_row(self):
-        print("[DEBUG] Кнопка Add нажата")
         table = self.get_table()
         if table:
             if table.columnCount() < 7:
@@ -72,7 +61,6 @@ class CourseViewController(QMainWindow):
                 table.setItem(row_count, i, QTableWidgetItem("0"))
 
     def delete_row(self):
-        print("[DEBUG] Кнопка Delete нажата")
         table = self.get_table()
         if table:
             selected = table.currentRow()

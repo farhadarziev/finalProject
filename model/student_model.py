@@ -13,7 +13,7 @@ def get_student_info(username, password):
     """, (username, password))
     result = cursor.fetchone()
     conn.close()
-    return result  # (student_id, student_name, course_name, teacher_name)
+    return result 
 
 def get_student_grades(student_id):
     conn = sqlite3.connect("database/sis.db")

@@ -5,29 +5,31 @@ The Student Information System (SIS) is a software application designed to manag
 
 Project Requirements List:
 
-1. **Student Login**: Students must be able to log in with a unique username and password.
-2. **Teacher Login**: Teachers must log in with their credentials and be able to manage grades and students.
-3. **Admin Login**: Admins must log in and have full control over the system, including the ability to add/remove.
-4. **Course Selection**: Students can choose one course and view details about it.
-5. **Student Grades**: Students can view their grades for different projects and exams.
-6. **Teacher Dashboard**: Teachers can view and manage students in their courses.
-7. **Admin Dashboard**: Admins can view all courses, students, and teachers and manage them.
-8. **CRUD Operations**: All tables (students, courses, teachers, and grades) should support CRUD operations.
-9. **Reports**: Admins should be able to generate reports (e.g., list of students, student grades).
+1. Role-Based Access Control: Users log in as students, teachers, or administrators, accessing functionalities pertinent to their roles.
+2. Secure Authentication: Login system requiring an email and a more than 3-character password containing only Latin letters and at least one digit.
+3. Student Dashboard: Students can view their enrolled courses and corresponding grades.
+4. Teacher Dashboard: Teachers can view courses they teach, see enrolled students, and assign grades.
+5. Administrator Panel: Administrators can view all courses, add or delate students
+6. Course Management: Courses such as Python, Java
+7. Grade Management: Teachers can assign and update grades for students in their
+courses.
+8. User Management: Administrators can add or remove student and teacher accounts.
+9. Data Persistence: All data is stored in an SQLite database, ensuring persistence across sessions.
+10.MVC Architecture: The application follows the Model-View-Controller design pattern, promoting organized and maintainable code.
 
 Team Members List:
 Mukadas Adylbekova 
-Zhamal Zhoomart kyzy
+Zhoomart kyzy Zhamal
 Farkhad Arziev
 
- Roles of Group Members: 
- Mukadas Adylbekova -  Frontend Developer, Backend Developer,  Presentation Specialist
-Zhamal Zhoomart kyzy - Frontend Developer, Backend Developer,  Project Manager
+Roles of Group Members: 
+Mukadas Adylbekova -  Frontend Developer, Backend Developer,  Presentation Specialist
+Zhoomart kyzy Zhamal - Frontend Developer, Backend Developer,  Project Manager
 Farkhad Arziev - Backend Developer, Meeting Documentation Specialist,  README and GitHub Specialist 
 
 
  Screenshots:
- ![Main window](KeyAspects1.png)
+![Main window](KeyAspects1.png)
 ![Login window](KeyAspects2.png)
 
 

@@ -7,7 +7,6 @@ class StudentController(QMainWindow):
         super().__init__()
         uic.loadUi("view2/student_view.ui", self)
 
-        # Получаем данные о студенте
         student_info = get_student_info(username, password)
         if not student_info:
             print("Ошибка: студент не найден")
@@ -16,7 +15,6 @@ class StudentController(QMainWindow):
 
         self.student_id, self.student_name, self.course_name, self.teacher_name = student_info
 
-        # Обновляем интерфейс
         self.studentcourse1.setText(f"Course: {self.course_name}")
         self.studentteacher1.setText(f"Teacher: {self.teacher_name}")
         self.studentname1.setText(f"Student: {self.student_name}")

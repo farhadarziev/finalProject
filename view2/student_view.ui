@@ -11,7 +11,7 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
 
-    <!-- Верхний тёмно-синий блок -->
+
     <item>
      <widget class="QFrame" name="headerFrame">
       <property name="frameShape"><enum>QFrame::StyledPanel</enum></property>
@@ -64,7 +64,7 @@
      </widget>
     </item>
 
-    <!-- Нижний синий блок с кнопкой Exit -->
+
     <item>
      <widget class="QFrame" name="footerFrame">
       <property name="frameShape"><enum>QFrame::StyledPanel</enum></property>

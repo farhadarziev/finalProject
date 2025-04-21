@@ -8,7 +8,7 @@ class MainController(QMainWindow):
         uic.loadUi("view2/mainview.ui", self)
         self.setWindowTitle("Выбор роли")
 
-        # Кнопки
+        
         self.stdbtn.clicked.connect(self.open_student_login)
         self.teabtn.clicked.connect(self.open_teacher_login)
         self.admbtn.clicked.connect(self.open_admin_login)

@@ -12,7 +12,7 @@ def get_teacher_info(teacher_id):
     cursor.execute("SELECT id, name FROM teachers WHERE id=?", (teacher_id,))
     result = cursor.fetchone()
     conn.close()
-    return result  # (id, name)
+    return result
 
 def get_teacher_course_name(teacher_id):
     conn = get_db()

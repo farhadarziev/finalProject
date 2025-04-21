@@ -9,7 +9,7 @@ class TeacherController(QMainWindow):
 
         teacher_info = get_teacher_info(teacher_id)
         if not teacher_info:
-            print("Ошибка: преподаватель не найден")
+            print("Error: teacher not found")
             self.close()
             return
 

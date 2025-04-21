@@ -35,7 +35,6 @@ color:white;
 #addbtn{
 height:25px;
 width:15px;
-widht:15px;
 font-size:14px;
 }
 
@@ -48,7 +47,6 @@ background-color:white;
 #delbtn{
 height:25px;
 width:15px;
-widht:15px;
 font-size:14px;
 }
 
@@ -61,7 +59,6 @@ background-color:white;
 #backbtnpy{
 height:25px;
 width:15px;
-widht:15px;
 font-size:14px;
 }
 

@@ -2,11 +2,9 @@ import sqlite3
 import os
 
 def check_user_credentials(username, password):
-    # Строим абсолютный путь к базе
-    base_dir = os.path.dirname(os.path.abspath(__file__))  # model/
+    base_dir = os.path.dirname(os.path.abspath(__file__))
     db_path = os.path.join(base_dir, '..', 'database', 'sis.db')
 
-    print("[DEBUG] using db path:", db_path)  # можешь оставить для проверки
 
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()

@@ -47,4 +47,5 @@ class LoginController(QMainWindow):
         self.student_win.show()
         self.close()
         
+        
 
