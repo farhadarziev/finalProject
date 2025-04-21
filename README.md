@@ -5,17 +5,16 @@ The Student Information System (SIS) is a software application designed to manag
 
 ## Project Requirements List:
 
-1. Role-Based Access Control: Users log in as students, teachers, or administrators, accessing functionalities pertinent to their roles.
-2. Secure Authentication: Login system requiring an email and a more than 3-character password containing only Latin letters and at least one digit.
-3. Student Dashboard: Students can view their enrolled courses and corresponding grades.
-4. Teacher Dashboard: Teachers can view courses they teach, see enrolled students, and assign grades.
-5. Administrator Panel: Administrators can view all courses, add or delate students
-6. Course Management: Courses such as Python, Java
-7. Grade Management: Teachers can assign and update grades for students in their
-courses.
-8. User Management: Administrators can add or remove student and teacher accounts.
-9. Data Persistence: All data is stored in an SQLite database, ensuring persistence across sessions.
-10.MVC Architecture: The application follows the Model-View-Controller design pattern, promoting organized and maintainable code.
+- Role-Based Access Control: Users log in as students, teachers, or administrators, accessing functionalities pertinent to their roles.
+- Secure Authentication: Login system requiring an email and a more than 3-character password containing only Latin letters and at least one digit.
+- Student Dashboard: Students can view their enrolled courses and corresponding grades.
+- Teacher Dashboard: Teachers can view courses they teach, see enrolled students, and assign grades.
+- Administrator Panel: Administrators can view all courses, add or delate students
+- Course Management: Courses such as Python, Java
+- Grade Management: Teachers can assign and update grades for students in their courses.
+- User Management: Administrators can add or remove student and teacher accounts.
+- Data Persistence: All data is stored in an SQLite database, ensuring persistence across sessions.
+- MVC Architecture: The application follows the Model-View-Controller design pattern, promoting organized and maintainable code.
 
 ## Team Members List:
 Mukadas Adylbekova 
